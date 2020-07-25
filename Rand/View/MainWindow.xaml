@@ -15,32 +15,72 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="От: " Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-                        <TextBox BorderBrush="Gray" BorderThickness="1" FontSize="20"/>
+                        <TextBox Text="{Binding Start}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="100">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="White">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
                     </StackPanel>
                 </Grid>
                 <Grid Grid.Column="1">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="До: " Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
-                        <TextBox BorderBrush="Gray" BorderThickness="1" FontSize="20"/>
+                        <TextBox Text="{Binding Finish}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="100">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="White">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Кол-во: " Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                        <TextBox Text="{Binding Count}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="75">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="White">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
                     </StackPanel>
                 </Grid>
             </Grid>
             <Grid Grid.Column="1">
-
+                <Button Background="#303F9F" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding GenerateNumbers}">
+                    <Border BorderBrush="#303F9F">
+                        <StackPanel Orientation="Horizontal" Width="Auto">
+                            <materialDesign:PackIcon Kind="Check" Height="20" Width="20" HorizontalAlignment="Left" Foreground="White" />
+                            <TextBlock Text="Сгенерировать" Margin="10 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="16"/>
+                        </StackPanel>
+                    </Border>
+                </Button>
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            
+            <TextBlock Text="{Binding Result}" Foreground="Gray" FontSize="20">
+                
+            </TextBlock>
         </Grid>
     </Grid>
 </Window>
