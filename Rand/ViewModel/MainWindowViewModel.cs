@@ -17,6 +17,7 @@ namespace Rand.ViewModel
         private string finish;
         private string result;
         private string count;
+        private bool isChecked;
 
         private SolidColorBrush borderCount;
         private SolidColorBrush borderFinish;
@@ -65,7 +66,6 @@ namespace Rand.ViewModel
             }
         }
 
-
         public SolidColorBrush BorderCount
         {
             get => borderCount;
@@ -95,6 +95,16 @@ namespace Rand.ViewModel
             }
         }
 
+        public bool IsChecked
+        {
+            get => isChecked;
+            set
+            {
+                isChecked = value;
+                OnPropertyChanged(nameof(IsChecked));
+            }
+        }
+
         public MainWindowViewModel()
         {
             BorderCount = new SolidColorBrush(Colors.Blue);//"#FF468AFF"
@@ -108,7 +118,7 @@ namespace Rand.ViewModel
         {
             if (MainWindowModel.TryConvertStringToInt(start).flag && MainWindowModel.TryConvertStringToInt(finish).flag && MainWindowModel.TryConvertStringToInt(count).flag)
             {
-                MainWindowModel model = new MainWindowModel(int.Parse(start), int.Parse(finish), int.Parse(count));
+                MainWindowModel model = new MainWindowModel(int.Parse(start), int.Parse(finish), int.Parse(count), isChecked);
                 string result = string.Empty;
                 foreach (var i in model.GetList()) result += i.ToString() + "   ";
                 Result = result;

@@ -15,13 +15,14 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.5*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
                     <StackPanel Orientation="Horizontal">
@@ -29,7 +30,7 @@
                         <TextBox Text="{Binding Start, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="100">
                             <TextBox.Template>
                                 <ControlTemplate>
-                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderStart, UpdateSourceTrigger=PropertyChanged}" Background="White">
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderStart}" Background="White">
                                         <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                                     </Border>
                                 </ControlTemplate>
@@ -43,7 +44,7 @@
                         <TextBox Text="{Binding Finish,UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="100">
                             <TextBox.Template>
                                 <ControlTemplate>
-                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderFinish,UpdateSourceTrigger=PropertyChanged}" Background="White">
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderFinish}" Background="White">
                                         <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                                     </Border>
                                 </ControlTemplate>
@@ -57,12 +58,18 @@
                         <TextBox Text="{Binding Count,UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" VerticalAlignment="Top" Margin="10 25 10 0" Height="25" MinWidth="75">
                             <TextBox.Template>
                                 <ControlTemplate>
-                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderCount,UpdateSourceTrigger=PropertyChanged}" Background="White">
+                                    <Border CornerRadius="5"  BorderThickness="1" BorderBrush="{Binding BorderCount}" Background="White">
                                         <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
                                     </Border>
                                 </ControlTemplate>
                             </TextBox.Template>
                         </TextBox>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Без повторений" Foreground="Gray" FontSize="12" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"/>
+                        <CheckBox IsChecked="{Binding IsChecked}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -78,7 +85,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <TextBlock Text="{Binding Result}" Foreground="Gray" FontSize="20">
+            <TextBlock Text="{Binding Result}" Foreground="Gray" FontSize="20" TextWrapping="Wrap">
                 
             </TextBlock>
         </Grid>
