@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -14,10 +15,10 @@ namespace Rand.ViewModel
     class MainWindowViewModel : INotifyPropertyChanged
     {
         private string start;
-        private string finish;
-        private string result;
+        private string finish;       
         private string count;
         private bool isChecked;
+        private List<string> result;
 
         private SolidColorBrush borderCount;
         private SolidColorBrush borderFinish;
@@ -56,7 +57,7 @@ namespace Rand.ViewModel
                 else BorderCount = new SolidColorBrush(Colors.Blue);
             }
         }
-        public string Result
+        public List<string> Result
         {
             get => result;
             set
@@ -107,9 +108,10 @@ namespace Rand.ViewModel
 
         public MainWindowViewModel()
         {
-            BorderCount = new SolidColorBrush(Colors.Blue);//"#FF468AFF"
-            BorderFinish = new SolidColorBrush(Colors.Blue);
-            BorderStart = new SolidColorBrush(Colors.Blue);
+            var brush = new SolidColorBrush(Colors.Blue);
+            BorderCount = brush;//"#FF468AFF"
+            BorderFinish = brush;
+            BorderStart = brush;
         }
         /// <summary>
         /// Начало генерации чисел 
@@ -119,9 +121,7 @@ namespace Rand.ViewModel
             if (MainWindowModel.TryConvertStringToInt(start).flag && MainWindowModel.TryConvertStringToInt(finish).flag && MainWindowModel.TryConvertStringToInt(count).flag)
             {
                 MainWindowModel model = new MainWindowModel(int.Parse(start), int.Parse(finish), int.Parse(count), isChecked);
-                string result = string.Empty;
-                foreach (var i in model.GetList()) result += i.ToString() + "   ";
-                Result = result;
+                Result = model.GetList();
             }
             else
             {

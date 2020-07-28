@@ -85,9 +85,25 @@
             </Grid>
         </Grid>
         <Grid Grid.Row="1">
-            <TextBlock Text="{Binding Result}" Foreground="Gray" FontSize="20" TextWrapping="Wrap">
-                
-            </TextBlock>
+            <ListBox ItemsSource="{Binding Result}" IsEnabled="False">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border CornerRadius="7" BorderBrush="Red" BorderThickness="2">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Direction="90" Color="Black" Opacity="0.75"  BlurRadius="10.0" />
+                                </Border.Effect>
+                            </Border>
+                            <TextBlock Text="{Binding}" Foreground="Black" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>                
         </Grid>
     </Grid>
 </Window>

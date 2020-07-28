@@ -14,6 +14,7 @@ namespace Rand.Model
         private int finish;
         private int count;
         private bool isChecked;
+
         public MainWindowModel(int start, int finish, int count, bool isChecked)
         {
             this.start = start;
@@ -21,10 +22,10 @@ namespace Rand.Model
             this.count = count;
             this.isChecked = isChecked;
         }
-        public List<int> GetList()
+        public List<string> GetList()
         {
             Random rand = new Random();
-            var list = new List<int>(count);
+            var list = new List<string>(count);
             finish++;//finish+1 - это чтобы было включительное значение, по умолчанию не включительно 
             if (finish < start) Swap();/*Для получения рандомного числа нужно обязательно, чтобы start<finish
             и если пользователь ввел данные не в те поля, программа просто поменяет значения и продолжит работу*/
@@ -37,15 +38,15 @@ namespace Rand.Model
                     for (var i = 0; i < count; i++)
                     {
                         nextValue = rand.Next(start, finish);
-                        if (list.Contains(nextValue)) i--;
-                        else list.Add(nextValue);
+                        if (list.Contains(nextValue.ToString())) i--;
+                        else list.Add(nextValue.ToString());
                     }
                 }
                 else MessageBox.Show("В данном диапазоне чисел невозможно получить значения без повторений.");
             }
             else
             {
-                for (var i = 0; i < count; i++) list.Add(rand.Next(start, finish));
+                for (var i = 0; i < count; i++) list.Add(rand.Next(start, finish).ToString());
             }
                 
             return list;
